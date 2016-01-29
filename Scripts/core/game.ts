@@ -6,7 +6,7 @@ import CScreen = config.Screen; // Not used
 var canvas: HTMLElement = document.getElementById("canvas");
 var stage: createjs.Stage;
 
-var helloLabel: createjs.Text;
+var menu:scenes.Menu;
 
 function init():void {
     // Create a reference to the HTML canvas element
@@ -22,20 +22,15 @@ function init():void {
 
 // Main game loop function, happens at each tick
 function gameLoop(event:createjs.Event):void{
-    helloLabel.rotation += 5;
+    menu.update();
     stage.update();
 }
 
 // This runs only once.
 function main() {
-    console.log("Game started!");
     
-    helloLabel = new createjs.Text("Hello mofos!", "60px Consolas", "#000000");
-    helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
-    helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
-    helloLabel.x = config.Screen.CENTER_X;
-    helloLabel.y = config.Screen.CENTER_Y;
-    stage.addChild(helloLabel);
+    menu = new scenes.Menu();
+
 }
 
 
