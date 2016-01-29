@@ -1,5 +1,7 @@
 ﻿/// <reference path="_reference.ts" />
 
+import CScreen = config.Screen; // Not used
+
 // Globals
 var canvas: HTMLElement = document.getElementById("canvas");
 var stage: createjs.Stage;
@@ -7,26 +9,32 @@ var stage: createjs.Stage;
 var helloLabel: createjs.Text;
 
 function init():void {
+    // Create a reference to the HTML canvas element
     canvas = document.getElementById("canvas");
+    // Create the main display list container
     stage = new createjs.Stage(canvas);
-    createjs.Ticker.setFPS(60);
+    // Set frame rate
+    createjs.Ticker.setFPS(config.Game.FPS);
+    // Create an event listener to count off frames
     createjs.Ticker.on("tick", gameLoop);
     main();
 }
 
+// Main game loop function, happens at each tick
 function gameLoop(event:createjs.Event):void{
     helloLabel.rotation += 5;
     stage.update();
 }
 
+// This runs only once.
 function main() {
     console.log("Game started!");
     
     helloLabel = new createjs.Text("Hello mofos!", "60px Consolas", "#000000");
     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
-    helloLabel.x = 320;
-    helloLabel.y = 240;
+    helloLabel.x = config.Screen.CENTER_X;
+    helloLabel.y = config.Screen.CENTER_Y;
     stage.addChild(helloLabel);
 }
 

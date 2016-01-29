@@ -1,0 +1,3 @@
+GitHub link - https://github.com/joetinoco/Week2_StateMachine
+
+Azure deployed app - http://comp232-statemachine.azurewebsites.net/
