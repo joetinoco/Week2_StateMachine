@@ -20,11 +20,19 @@ var scenes;
             this._helloLabel.x = config.Screen.CENTER_X;
             this._helloLabel.y = config.Screen.CENTER_Y;
             this.addChild(this._helloLabel);
+            // Add a button
+            this._startButton = new objects.Button("StartButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 60);
+            this.addChild(this._startButton);
+            this._startButton.on("click", this._startButtonClick, this);
             stage.addChild(this);
         };
         // Menu scene updates here.
         Menu.prototype.update = function () {
             this._helloLabel.rotation += 5;
+        };
+        // Event handlers 
+        Menu.prototype._startButtonClick = function (event) {
+            this._helloLabel.text = "!Game started!";
         };
         return Menu;
     })(objects.Scene);
